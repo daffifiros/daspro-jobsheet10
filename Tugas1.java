@@ -39,7 +39,6 @@ public class Tugas1 {
             rataPert[i] /= jmlResp;
             i++;
         }
-        
         System.out.println();
         i=0;
         while (i < jmlPert) {
