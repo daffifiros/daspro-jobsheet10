@@ -22,7 +22,7 @@ public class BioskopWithScanner17 {
 //         }
 //     }
 // }
-        // Modifikasi memberikan opsi menu
+        
         int pilihan;
         do {
             System.out.println("\nMenu:");
@@ -36,31 +36,43 @@ public class BioskopWithScanner17 {
             switch (pilihan) {
                 case 1:
         
-                    while (true) {
-                        System.out.print("Masukkan nama: ");
-                        String nama = scanner.nextLine();
-                        System.out.print("Masukkan baris: ");
-                        int baris = scanner.nextInt();
-                        System.out.print("Masukkan kolom: ");
-                        int kolom = scanner.nextInt();
-                        scanner.nextLine();
-                        penonton[baris - 1][kolom - 1] = nama;
-                        System.out.print("Input penonton lainnya? (y/n): ");
-                        String lanjut = scanner.nextLine();
-                        if (lanjut.equalsIgnoreCase("n")) {
-                            break;
-                        }
+                while (true) {
+                    System.out.print("Masukkan nama: ");
+                    String nama = scanner.nextLine();
+                    System.out.print("Masukkan baris: ");
+                    int baris = scanner.nextInt() - 1; 
+                    System.out.print("Masukkan kolom: ");
+                    int kolom = scanner.nextInt() - 1;
+                    
+
+                    if (penonton[baris][kolom] != null) {
+                        System.out.println("Kursi sudah terisi, pilih kursi lain!");
+                    } else {
+                        penonton[baris][kolom] = nama;
+                    } 
+
+                    scanner.nextLine();
+                    System.out.print("Input penonton lainnya? (y/n): ");
+                    String lanjut = scanner.nextLine();
+                    if (lanjut.equalsIgnoreCase("n")) {
+                        break;
                     }
-                    break;
+                }
+                break;
+                       
                 case 2:
-                    System.out.println("\nDaftar Penonton:");
-                    for (int i = 0; i < penonton.length; i++) {
-                        for (int j = 0; j < penonton[i].length; j++) {
-                            System.out.print(penonton[i][j] + "\t");
-                        }
-                        System.out.println();
+            System.out.println("\nDaftar Penonton:");
+            for (int i = 0; i < penonton.length; i++) {
+                for (int j = 0; j < penonton[i].length; j++) {
+                    if (penonton[i][j] == null) {
+                        System.out.print("***\t"); 
+                    } else {
+                        System.out.print(penonton[i][j] + "\t");
                     }
-                    break;
+                }
+                System.out.println();
+            }
+            break;
                 case 3:
                     System.out.println("Terima kasih!");
                     break;
